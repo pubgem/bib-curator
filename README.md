@@ -1,1 +1,1 @@
-# bib-curator
+# citation-curator
