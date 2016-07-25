@@ -1,0 +1,6 @@
+recursive-include citation_curator/views *
+recursive-include skels *
+include Readme.rst
+include requirements.txt
+include citation_curator/migrations/alembic.ini
+include citation_curator/migrations/script.py.mako
