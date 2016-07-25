@@ -42,6 +42,10 @@ class citation_curator(Diamond):
         from .views.administration.modelviews import adminbaseview
         self.app.register_blueprint(adminbaseview)
 
+    def init_rest(self):
+        from rest import init_rest
+        self.super("rest", api_map=init_rest)
+
 
 def create_app():
     global application
@@ -58,7 +62,7 @@ def create_app():
         application.facet("error_handlers")
         application.facet("request_handlers")
         application.facet("administration")
-        # application.facet("rest")
+        application.facet("rest")
         # application.facet("webassets")
         # application.facet("email")
         # application.facet("debugger")

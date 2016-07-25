@@ -85,5 +85,27 @@ def populate_db():
     User.add_admin_user(password='prx')
 
 
+bibtex = """@ARTICLE{Cesar2013,
+  author = {Jean César},
+  title = {An amazing title},
+  year = {2013},
+  month = jan,
+  volume = {12},
+  pages = {12--23},
+  journal = {Nice Journal},
+  abstract = {This is an abstract. This line should be long enough to test
+     multilines...},
+  comments = {A comment},
+  keywords = {keyword1, keyword2}
+}
+"""
+
+
+@manager.command
+def add_default():
+    from citation_curator.curator import Curator
+    curator = Curator()
+    curator.handle_payload(bibtex)
+
 if __name__ == "__main__":
     manager.run()
