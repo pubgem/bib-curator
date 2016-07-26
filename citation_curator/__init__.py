@@ -43,7 +43,7 @@ class citation_curator(Diamond):
         self.app.register_blueprint(adminbaseview)
 
     def init_rest(self):
-        from rest import init_rest
+        from .rest import init_rest
         self.super("rest", api_map=init_rest)
 
 

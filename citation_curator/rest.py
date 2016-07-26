@@ -4,24 +4,22 @@
 from flask.ext.restful import Resource
 import flask
 from flask import request
-from .curator import Curator
+from .curator import CitationCurator
 
 
 class Citation(Resource):
 
     def post(self):
-        # curl -X POST -d bibtex='{blah}' localhost:5049/citation
-        curator = Curator()
+        # curl -X POST --form 'bibtex=<citation_curator/tests/sample.bib' localhost:5049/citation
 
         if 'bibtex' in request.form:
             payload = request.form['bibtex']
         else:
             flask.abort(400)
 
-        curator.handle_payload(payload)
-
-        flask.abort(401)
-        # return flask.Response(view_agent(id))
+        curator = CitationCurator()
+        curator.process(payload)
+        return "OK"
 
 
 def init_rest(rest_extension):

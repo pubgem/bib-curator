@@ -67,7 +67,7 @@ def init_db(migration):
 
     if migration:
         # create database using migrations
-        print "applying migration"
+        print("applying migration")
         upgrade()
     else:
         # create database from model schema directly
@@ -103,9 +103,9 @@ bibtex = """@ARTICLE{Cesar2013,
 
 @manager.command
 def add_default():
-    from citation_curator.curator import Curator
-    curator = Curator()
-    curator.handle_payload(bibtex)
+    from citation_curator.curator import CitationCurator
+    curator = CitationCurator()
+    curator.process(bibtex)
 
 if __name__ == "__main__":
     manager.run()
